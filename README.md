@@ -2,6 +2,8 @@
 
 ![Design preview for the Entertainment web app coding challenge](./preview.jpg)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/79d07dcd-ce5e-412b-8c97-847cf5e45ba3/deploy-status)](https://app.netlify.com/sites/inspiring-bubblegum-34cb15/deploys)
+
 ## Welcome! 👋
 
 

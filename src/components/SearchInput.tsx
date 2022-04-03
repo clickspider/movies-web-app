@@ -18,12 +18,12 @@ const SearchInput = () => {
   }, [location]);
 
   return (
-    <div className="search-input">
+    <section className="search-input">
       <icons.iconSearch />
       <div className="search-input__container">
         <input type="text" placeholder={"Search for " + getTabName()} />
       </div>
-    </div>
+    </section>
   );
 };
 
