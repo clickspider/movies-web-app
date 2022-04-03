@@ -18,9 +18,7 @@ yarn start
 - The application is now running at [http://localhost:8080](http://localhost:8080)
 
 
-## In this app:
-
-The users are be able to:
+## In this app, users are be able to:
 
 - View the optimal layout for the app depending on their device's screen size
 - See hover states for all interactive elements on the page
