@@ -1,0 +1,13 @@
+.main-header {
+  font-weight: 700;
+
+  overflow: hidden;
+
+  @media #{$break1} {
+    margin-top: 40px;
+  }
+
+  @media #{$break2}, #{$break3}, #{$break4} {
+    margin-top: 55px;
+  }
+}
