@@ -18,12 +18,24 @@ a {
 .main-container {
   display: flex;
   @media #{$break1} {
-    flex-direction: column;
     padding: 22px;
+  }
+
+  @media #{$break0}, #{$break1} {
+    flex-direction: column;
+  }
+
+  @media #{$break2}, #{$break3}, #{$break4} {
+    padding: 0 32px;
   }
 }
 
 .main-content {
+  width: 100%;
+  @media #{$break0} {
+    padding: 0 16px;
+    margin-top: 24px;
+  }
   @media #{$break1} {
     margin-top: 32px;
   }

@@ -1,14 +1,14 @@
 import React, { FC } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import Header from "./Header";
+import SearchInput from "./SearchInput";
 import Footer from "./Footer";
 import SideBarNavigation from "./SideBarNavigation";
 
 import AllCatalog from "./AllCatalog";
 import MoviesCatalog from "./MoviesCatalog";
 import TvCatalog from "./TvCatalog";
-import SavedCatalog from "./SavedCatalog";
+import Bookmarked from "./Bookmarked";
 
 const MainLayout: FC = ({ children }) => (
   <>
@@ -16,13 +16,13 @@ const MainLayout: FC = ({ children }) => (
       <div className="main-container">
         <SideBarNavigation />
         <div className="main-content">
-          <Header />
+          <SearchInput />
           <main>
             <Routes>
               <Route path="*" element={<AllCatalog />} />
               <Route path="/movies-catalog" element={<MoviesCatalog />} />
               <Route path="/TV-catalog" element={<TvCatalog />} />
-              <Route path="/saved-catalog" element={<SavedCatalog />} />
+              <Route path="/Bookmarked" element={<Bookmarked />} />
             </Routes>
             {children}
           </main>

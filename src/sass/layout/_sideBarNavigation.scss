@@ -2,8 +2,17 @@
 
 .sidenav {
   background-color: $color-secondary;
-  border-radius: 18px;
   display: flex;
+
+  @media #{$break1}, #{$break2}, #{$break3}, #{$break4} {
+    border-radius: 18px;
+  }
+
+  @media #{$break0} {
+    padding: 0 16px;
+    align-items: center;
+    height: 56px;
+  }
 
   @media #{$break1} {
     padding: 0 24px;
@@ -20,10 +29,11 @@
     align-items: center;
     padding: 36px 0;
     margin: 32px;
+    margin-left: 0;
   }
 
   &__logo {
-    @media #{$break1} {
+    @media #{$break0}, #{$break1} {
       margin-right: auto;
     }
     @media #{$break2}, #{$break3}, #{$break4} {
@@ -32,6 +42,14 @@
   }
 
   &__items {
+    @media #{$break0} {
+      a {
+        &:not(:first-child) {
+          margin-left: 24px;
+        }
+      }
+    }
+
     @media #{$break1} {
       a {
         &:not(:first-child) {
@@ -71,7 +89,7 @@
   &__avatar {
     width: 40px;
     height: 40px;
-    @media #{$break1} {
+    @media #{$break0}, #{$break1} {
       margin-left: auto;
     }
   }

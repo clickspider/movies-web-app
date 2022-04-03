@@ -1,5 +1,5 @@
-/* Breakpoints */
-$break1: "(max-width: 765px)"; // Mobile
+$break0: "(max-width: 375px)"; // Mobile
+$break1: "(min-width: 376px) and (max-width: 765px)"; // Mobile
 $break2: "(min-width: 766px) and (max-width: 1199px)"; // tablet
 $break3: "(min-width: 1200px) and (max-width: 1366px)"; // Big screen aka laptop
 $break4: "(min-width: 1367px)"; // xl screen

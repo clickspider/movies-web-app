@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import icons from "../assets/icons";
 
@@ -15,7 +15,7 @@ const SideBarNavigation = () => (
       <NavLink to="/TV-catalog">
         <icons.iconNavTVSeries />
       </NavLink>
-      <NavLink to="/saved-catalog">
+      <NavLink to="/bookmarked">
         <icons.iconNavBookmark />
       </NavLink>
     </nav>

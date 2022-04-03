@@ -1,0 +1,42 @@
+@use "../abstracts/variables";
+
+.search-input {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+  &__container {
+    width: 100%;
+
+    input {
+      caret-color: $color-primary;
+      margin-left: 14px;
+      width: 100%;
+
+      @media #{$break0} {
+        font-size: 16px;
+      }
+
+      @media #{$break1}, #{$break2}, #{$break3}, #{$break4} {
+        font-size: 24px;
+      }
+
+      &:active {
+        color: $color-white;
+      }
+      &::placeholder {
+        color: $color-tertiary;
+      }
+    }
+    &:focus-within {
+      &::after {
+        content: "";
+        display: block;
+        height: 1px;
+        background-color: $color-tertiary;
+        margin-top: 14px;
+        margin-left: 12px;
+      }
+    }
+  }
+}
