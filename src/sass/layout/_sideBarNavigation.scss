@@ -81,8 +81,10 @@
 
   svg {
     fill: #5a698f;
-    &:hover {
-      fill: $color-primary;
+    @media #{$break1}, #{$break2}, #{$break3}, #{$break4} {
+      &:hover {
+        fill: $color-primary;
+      }
     }
   }
 
