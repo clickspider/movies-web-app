@@ -1,0 +1,36 @@
+.icon-container {
+  position: relative;
+  display: block;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  opacity: 0.5;
+  background: $color-secondary;
+
+  > * {
+    @include absCenter;
+  }
+
+  &:hover {
+    opacity: 1;
+    background: $color-white;
+
+    svg {
+      stroke: $color-secondary;
+    }
+  }
+
+  &__bookmarked {
+    opacity: 1;
+    svg {
+      stroke: $color-white;
+      fill: $color-white;
+    }
+    &:hover {
+      svg {
+        stroke: $color-secondary;
+        fill: $color-secondary;
+      }
+    }
+  }
+}

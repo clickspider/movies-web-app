@@ -1,27 +1,47 @@
+.fill-white {
+  fill: #fff !important;
+}
+
+.stroke-none {
+  stroke: none !important;
+}
+
+.mt-34 {
+  margin-top: 34px !important;
+}
+
 .mb-24 {
-    margin-bottom: 24px !important;
+  margin-bottom: 24px !important;
+}
+
+.mx-8 {
+  margin-left: 8px !important;
+  margin-right: 8px !important;
+}
+
+.mr-6 {
+  margin-right: 6px !important;
 }
 
 .mb-42 {
-
-    @media #{$break2}, #{$break3}, #{$break4} {
-        margin-bottom: 42px !important;
-    }
+  @media #{$break2}, #{$break3}, #{$break4} {
+    margin-bottom: 42px !important;
+  }
 }
 
 .mx-xsm-auto {
-    @media #{$break1} {
-        margin-left: auto !important;
-        margin-right: auto !important;
-    }
+  @media #{$break1} {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
 }
 
 .text-xsm-center {
-    @media #{$break1}, #{$break2} {
-        text-align: center !important;
-    }
+  @media #{$break1}, #{$break2} {
+    text-align: center !important;
+  }
 }
 
 .color-white {
-    color: $color-white !important;
+  color: $color-white !important;
 }

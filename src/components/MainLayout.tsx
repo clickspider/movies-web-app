@@ -17,7 +17,7 @@ const MainLayout: FC = ({ children }) => (
         <SideBarNavigation />
         <div className="main-content">
           <SearchInput />
-          <main>
+          <main className="mt-34">
             <Routes>
               <Route path="*" element={<AllCatalog />} />
               <Route path="/movies-catalog" element={<MoviesCatalog />} />

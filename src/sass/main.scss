@@ -6,10 +6,13 @@
 @import "base/typography";
 @import "base/utilities";
 
+@import "components/iconContainer";
+@import "components/searchInput";
+@import "components/movieCard";
 @import "components/button";
-@import "components/serach-input";
 
 @import "layout/footer";
 @import "layout/header";
 @import "layout/sideBarNavigation";
+@import "layout/movieSection";
 @import "layout/reset";
