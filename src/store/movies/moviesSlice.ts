@@ -20,7 +20,11 @@ export const moviesSlice = createSlice({
       },
     },
   } as MoviesState,
-  reducers: {},
+  reducers: {
+    setMovies: (state, action: PayloadAction<Movie[]>) => {
+      state.entities.movies.moviesList = action.payload;
+    },
+  },
   extraReducers: {
     [fetchMovies.fulfilled.toString()]: (
       state,
@@ -44,5 +48,7 @@ export const moviesSlice = createSlice({
     },
   },
 });
+
+export const { setMovies } = moviesSlice.actions;
 
 export const moviesSelector = (state: RootState) => state.movies.entities;

@@ -1,8 +1,13 @@
-import React, { useCallback } from "react";
+import React, { FC, useCallback } from "react";
 import icons from "../assets/icons";
 import { useLocation } from "react-router-dom";
 
-const SearchInput = () => {
+interface SearchInputProps {
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  value: string;
+}
+
+const SearchInput: FC<SearchInputProps> = ({ onChange, value }) => {
   const location = useLocation();
   const getTabName = useCallback(() => {
     switch (location.pathname) {
@@ -16,12 +21,16 @@ const SearchInput = () => {
         return "Movies or TV Series";
     }
   }, [location]);
-
   return (
     <section className="search-input">
       <icons.iconSearch />
       <div className="search-input__container">
-        <input type="text" placeholder={"Search for " + getTabName()} />
+        <input
+          type="text"
+          placeholder={"Search for " + getTabName()}
+          value={value}
+          onChange={onChange}
+        />
       </div>
     </section>
   );

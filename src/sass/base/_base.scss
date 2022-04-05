@@ -81,7 +81,7 @@ svg {
   @media #{$break1} {
     grid-template-columns: repeat(auto-fit, 220px);
     column-gap: 30px;
-    row-gap: 60px;
+    row-gap: 85px;
   }
 
   @media #{$break2} {
