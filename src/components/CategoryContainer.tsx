@@ -42,7 +42,7 @@ const CategoryContainer: FC<CategoryContainerProps> = ({
       title={
         searchValue
           ? `Found ${filteredMovies?.length} results for ‘${searchValue}’ ${
-              bookmarked ? `in ${category}` : ""
+              category ? `in ${category}` : ""
             }`
           : `${customSectionTitle || category}`
       }
