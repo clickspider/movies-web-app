@@ -1,6 +1,15 @@
 .movie-card {
   position: relative;
 
+  &:hover {
+    cursor: pointer;
+    .movie-card__overlay-button {
+      display: block;
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+      z-index: 4;
+    }
+  }
+
   &.card-large {
     @media #{$break0} {
       height: 140px;
@@ -30,11 +39,41 @@
     }
   }
 
+  &__content-small {
+    line-height: 1.5;
+  }
+
+  &__overlay-button {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.5s ease;
+  }
+
+  &__play-button {
+    @include absCenter;
+    width: 117px;
+    height: 48px;
+    background-color: $color-secondary-opacity-2;
+    justify-content: space-evenly;
+    border-radius: 28.5px;
+  }
+
   &__bookmark-button {
     position: absolute;
-    top: 16px;
-    right: 24px;
-    z-index: 3;
+    z-index: 5;
+    @media #{$break0} {
+      top: 7px;
+      right: 5px;
+    }
+    @media #{$break1}, #{$break2}, #{$break3}, #{$break4} {
+      top: 16px;
+      right: 24px;
+    }
   }
 
   &__bg-layer {
@@ -99,7 +138,7 @@
 
           width: 34px;
           height: 21px;
-          background: hsl(0deg 0% 100% / 19%);
+          background: $color-secondary-opacity-2;
           border-radius: 10.5px;
 
           display: flex;

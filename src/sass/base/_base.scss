@@ -9,6 +9,20 @@ body {
   font-weight: 300;
 }
 
+* > ::-webkit-scrollbar {
+  width: 10px; /* width of the entire scrollbar */
+  height: 5px; /* height of the entire scrollbar */
+}
+
+* > ::-webkit-scrollbar-track {
+  background: transparent; /* color of the tracking area */
+}
+
+* > ::-webkit-scrollbar-thumb {
+  background-color: $color-secondary; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+}
+
 a {
   &:hover {
     color: $color-primary;
@@ -35,7 +49,7 @@ svg {
 }
 
 .main-content {
-  width: 100%;
+  max-width: 1240px;
 
   @media #{$break0} {
     padding: 0 16px;
@@ -44,7 +58,41 @@ svg {
   @media #{$break1} {
     margin-top: 32px;
   }
+
+  @media #{$break0}, #{$break1} {
+    width: 100%;
+  }
   @media #{$break2}, #{$break3}, #{$break4} {
     margin-top: 64px;
+    width: 89%;
+  }
+}
+
+.grid-container {
+  display: grid;
+  height: 100%;
+
+  @media #{$break0} {
+    grid-template-columns: repeat(auto-fit, 164px);
+    column-gap: 14px;
+    row-gap: 60px;
+  }
+
+  @media #{$break1} {
+    grid-template-columns: repeat(auto-fit, 220px);
+    column-gap: 30px;
+    row-gap: 60px;
+  }
+
+  @media #{$break2} {
+    grid-template-columns: repeat(auto-fit, 265px);
+    column-gap: 29px;
+    row-gap: 76px;
+  }
+
+  @media #{$break3}, #{$break4} {
+    grid-template-columns: repeat(auto-fit, 280px);
+    column-gap: 40px;
+    row-gap: 84px;
   }
 }

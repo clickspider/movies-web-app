@@ -4,6 +4,7 @@ import { moviesSelector, fetchMovies } from "../store/movies/moviesSlice";
 import { useAppDispatch } from "../store";
 import MovieSection from "./MovieSection";
 import { Movie } from "../store/movies/types";
+import MovieCard from "./MovieCard";
 
 import MovieCardSlider from "./MovieCardSlider";
 
@@ -38,14 +39,19 @@ const AllCatalog: FC = () => {
         <MovieCardSlider moviesList={trendingMovies} />
       </MovieSection>
 
-      {/* <MovieSection title="Recommended for you">
+      <MovieSection title="Recommended for you" className="mt-40">
         <div className="grid-container">
-          <MovieCard
-            movie={{ title: "Beyond Earth", year: 2019, category: "movie" }}
-            mode="card-small"
-          />
+          {movies.moviesList.map((movie: Movie) => (
+            <MovieCard
+              movie={movie}
+              key={movie.id}
+              mode="card-small"
+              onBookmarkClick={(e, id) => console.log("BookMark Single", e, id)}
+              onPlayClick={(e, id) => console.log("Play single", e, id)}
+            />
+          ))}
         </div>
-      </MovieSection> */}
+      </MovieSection>
     </section>
   );
 };

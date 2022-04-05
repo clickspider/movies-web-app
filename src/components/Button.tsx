@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 
 interface ButtonProps {
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   title?: string;
   backgroundColor?: string;
   className?: string;

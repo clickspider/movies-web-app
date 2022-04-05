@@ -32,4 +32,17 @@
       }
     }
   }
+
+  &__play-icon {
+    opacity: 1;
+    background: $color-secondary-opacity-2;
+
+    svg {
+      fill: $color-white;
+      stroke: none !important;
+    }
+    &:hover {
+      background: $color-secondary-opacity-2;
+    }
+  }
 }

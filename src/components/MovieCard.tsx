@@ -11,16 +11,39 @@ interface MovieCardProps {
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     id: Movie["id"]
   ) => void;
+  onPlayClick: (
+    event:
+      | React.MouseEvent<HTMLButtonElement, MouseEvent>
+      | React.MouseEvent<HTMLDivElement, MouseEvent>,
+    id: Movie["id"]
+  ) => void;
 }
 
 const MovieCard: FC<MovieCardProps> = ({
   mode = "card-large",
   movie,
   onBookmarkClick,
+  onPlayClick,
 }) => {
   return (
     <div className={`movie-card ${mode}`}>
-      <img src={movie.thumbnail?.trending.large} alt={movie.title} />
+      <div
+        className="movie-card__overlay-button"
+        onClick={(event) => onPlayClick(event, movie.id)}
+      >
+        <Button className="movie-card__play-button">
+          <IconContainer className="icon-container__play-icon">
+            <icons.iconPlay />
+          </IconContainer>
+          <span className="heading-tertiary">Play</span>
+        </Button>
+      </div>
+      <img
+        src={
+          movie.thumbnail?.trending?.large || movie.thumbnail?.regular?.large
+        }
+        alt={movie.title}
+      />
       <Button
         className="movie-card__bookmark-button"
         onClick={(event) => onBookmarkClick(event, movie.id)}

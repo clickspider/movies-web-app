@@ -1,8 +1,7 @@
 .movie-card-slider {
-  overflow-y: scroll;
+  overflow: scroll hidden;
   &__container {
     display: flex;
-    overflow-y: scroll;
     width: max-content;
     height: max-content;
 

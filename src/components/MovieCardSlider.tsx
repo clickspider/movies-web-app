@@ -15,7 +15,8 @@ const MovieCardSlider: FC<MovieCardSliderProps> = ({ moviesList }) => {
             <MovieCard
               key={movie.id}
               movie={movie}
-              onBookmarkClick={(e, id) => console.log(e, id)}
+              onBookmarkClick={(e, id) => console.log("BookMark", e, id)}
+              onPlayClick={(e, id) => console.log("Play", e, id)}
             />
           ))}
       </div>

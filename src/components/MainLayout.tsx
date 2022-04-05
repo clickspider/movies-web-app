@@ -26,7 +26,7 @@ const MainLayout: FC = ({ children }) => (
             </Routes>
             {children}
           </main>
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </div>
     </BrowserRouter>
