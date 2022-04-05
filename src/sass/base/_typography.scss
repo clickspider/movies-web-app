@@ -1,76 +1,20 @@
 .heading-primary {
-    color: $color-primary;
-    font-weight: 700;
-    letter-spacing: -2px;
-
-    @media #{$break3},
-    #{$break4} {
-        font-size: 80px;
-        line-height: 90px;
-    }
-
-    @media #{$break2} {
-        font-size: 53px;
-        line-height: 1.2;
-    }
-
-    @media #{$break1} {
-        font-size: 42px;
-        line-height: 1.2;
-    }
-
-
+  @media #{$break0} {
+    font-size: 20px;
+  }
+  @media #{$break1}, #{$break2}, #{$break3}, #{$break4} {
+    font-size: 32px;
+  }
 }
 
 .heading-secondary {
-    color: $color-primary;
-    font-size: 22px;
-    font-weight: 500;
-    letter-spacing: 0.15px;
-
-
-    @media #{$break3},
-    #{$break4} {
-        line-height: 1.5;
-        font-size: 22px;
-    }
-
-    @media #{$break2},
-    #{$break1} {
-        font-size: 18px;
-        line-height: 1.7;
-    }
-
+  @media #{$break0} {
+    font-size: 15px;
+  }
+  @media #{$break1}, #{$break2}, #{$break3}, #{$break4} {
+    font-size: 24px;
+  }
 }
 
 .heading-tertiary {
-    color: $color-primary;
-
-    font-weight: 700;
-    letter-spacing: -1px;
-    margin-bottom: 18px;
-
-    @media #{$break2}, #{$break3},
-    #{$break4} {
-        font-size: 40px;
-    }
-
-
-    @media #{$break1} {
-        font-size: 28px;
-    }
-
-    &--sub {
-        color: $color-primary;
-        @media #{$break3},
-        #{$break4} {
-            font-size: 18px;
-            line-height: 32px;
-            letter-spacing: 0.12px;
-        }
-    
-        @media #{$break2} {}
-    
-        @media #{$break1} {}
-    }
 }

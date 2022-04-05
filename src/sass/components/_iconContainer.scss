@@ -4,8 +4,7 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  opacity: 0.5;
-  background: $color-secondary;
+  background: $color-secondary-opacity;
 
   > * {
     @include absCenter;

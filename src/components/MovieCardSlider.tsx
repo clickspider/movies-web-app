@@ -9,14 +9,16 @@ interface MovieCardSliderProps {
 const MovieCardSlider: FC<MovieCardSliderProps> = ({ moviesList }) => {
   return (
     <section className="movie-card-slider">
-      {moviesList &&
-        moviesList.map((movie: Movie) => (
-          <MovieCard
-            key={movie.id}
-            movie={movie}
-            onBookmarkClick={(e, id) => console.log(e, id)}
-          />
-        ))}
+      <div className="movie-card-slider__container">
+        {moviesList &&
+          moviesList.map((movie: Movie) => (
+            <MovieCard
+              key={movie.id}
+              movie={movie}
+              onBookmarkClick={(e, id) => console.log(e, id)}
+            />
+          ))}
+      </div>
     </section>
   );
 };

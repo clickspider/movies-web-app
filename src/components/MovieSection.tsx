@@ -6,7 +6,7 @@ interface MovieSectionProps {
 
 const MovieSection: FC<MovieSectionProps> = ({ children, title }) => (
   <section className="movie-section">
-    <h1 className="movie-section__heading">{title}</h1>
+    <h1 className="movie-section__heading heading-primary">{title}</h1>
     {children}
   </section>
 );

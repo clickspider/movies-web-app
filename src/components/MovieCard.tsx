@@ -19,7 +19,7 @@ const MovieCard: FC<MovieCardProps> = ({
   onBookmarkClick,
 }) => {
   return (
-    <div className="movie-card">
+    <div className={`movie-card ${mode}`}>
       <img src={movie.thumbnail?.trending.large} alt={movie.title} />
       <Button
         className="movie-card__bookmark-button"
@@ -50,10 +50,25 @@ const MovieCard: FC<MovieCardProps> = ({
             <icons.iconCategoryMovie className="mr-6 fill-white stroke-none" />
             {movie.category}
           </li>
-          <li className="movie-card__content-list--item mx-8">&#8226;</li>
-          <li className="movie-card__content-list--item">{movie.rating}</li>
+          {mode === "card-large" ? (
+            <>
+              <li className="movie-card__content-list--item mx-8 d-none d-md-block">
+                &#8226;
+              </li>
+              <li className="movie-card__content-list--rating-speical">
+                {movie.rating}
+              </li>
+            </>
+          ) : (
+            <>
+              <li className="movie-card__content-list--item mx-8">&#8226;</li>
+              <li className="movie-card__content-list--item">{movie.rating}</li>
+            </>
+          )}
         </ul>
-        <h3 className="movie-card__content-title">{movie.title}</h3>
+        <h3 className="movie-card__content-title heading-secondary">
+          {movie.title}
+        </h3>
       </div>
     </div>
   );

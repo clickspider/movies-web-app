@@ -1,0 +1,13 @@
+.movie-card-slider {
+  overflow-y: scroll;
+  &__container {
+    display: flex;
+    overflow-y: scroll;
+    width: max-content;
+    height: max-content;
+
+    & > .movie-card {
+      margin-right: 16px;
+    }
+  }
+}

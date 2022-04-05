@@ -4,11 +4,9 @@
   }
   &__heading {
     @media #{$break0} {
-      font-size: 20px;
       margin-bottom: 16px;
     }
     @media #{$break1}, #{$break2}, #{$break3}, #{$break4} {
-      font-size: 32px;
       margin-bottom: 25px;
     }
   }
