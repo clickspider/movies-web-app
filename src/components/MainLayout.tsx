@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import SearchInput from "./SearchInput";
-import Footer from "./Footer";
+// import Footer from "./Footer";
 import SideBarNavigation from "./SideBarNavigation";
 
 import AllCatalog from "./AllCatalog";
