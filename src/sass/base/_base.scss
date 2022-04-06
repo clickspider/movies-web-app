@@ -33,6 +33,10 @@ svg {
   fill: $color-svg-default;
 }
 
+button {
+  cursor: pointer;
+}
+
 .main-container {
   display: flex;
   @media #{$break1} {

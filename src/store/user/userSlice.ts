@@ -27,16 +27,19 @@ export const userSlice = createSlice({
     },
   } as UserState,
   reducers: {
-    setUserProfile: (state, action: PayloadAction<UserProfile>) => {
-      const { uid, email, photoURL, displayName, bookmarkedIds } =
-        action.payload;
-      const formartedProfile = {
-        uid,
-        email,
-        photoURL,
-        displayName,
-        bookmarkedIds,
-      };
+    setUserProfile: (state, action: PayloadAction<UserProfile | null>) => {
+      let formartedProfile = null;
+      if (action.payload) {
+        const { uid, email, photoURL, displayName, bookmarkedIds } =
+          action.payload;
+        formartedProfile = {
+          uid,
+          email,
+          photoURL,
+          displayName,
+          bookmarkedIds,
+        };
+      }
       window.localStorage.setItem(
         "userProfile",
         JSON.stringify(formartedProfile)

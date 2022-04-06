@@ -22,6 +22,8 @@ function App() {
     if (newUser) {
       dispatch(fetchMovies());
       dispatch(setUserProfile({ ...newUser, bookmarkedIds: [] }));
+    } else {
+      dispatch(setUserProfile(null));
     }
   });
 

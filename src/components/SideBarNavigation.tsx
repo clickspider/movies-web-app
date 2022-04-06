@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import icons from "../assets/icons";
 import { useSelector } from "react-redux";
 import { userSelector } from "../store/user/userSlice";
+import { signOut, auth } from "../common/fbConfig";
 const SideBarNavigation = () => {
   const { user } = useSelector(userSelector);
 
@@ -23,12 +24,13 @@ const SideBarNavigation = () => {
           <icons.iconNavBookmark />
         </NavLink>
       </nav>
-
-      <img
-        src={user.profile?.photoURL || icons.avatar}
-        alt="avatar"
-        className="sidenav__avatar"
-      />
+      <button className="sidenav__avatar" onClick={(e) => signOut(auth)}>
+        <img
+          src={user.profile?.photoURL || icons.avatar}
+          alt="avatar"
+          className="sidenav__avatar-img"
+        />
+      </button>
     </header>
   );
 };
