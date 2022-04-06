@@ -1,20 +1,28 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "..";
-import { BASE_API_URL } from "../../common/config";
+import { db, collection, getDocs } from "../../common/fbConfig";
 import { Movie, MoviesState } from "./types";
 
 export const fetchMovies = createAsyncThunk("movies/fetchMovies", async () => {
-  const response = await window.fetch(`${BASE_API_URL}/movies`);
-  const data = (await response.json()) as Movie[];
-  return data;
+  try {
+    const response = await getDocs(collection(db, "moviesList"));
+    const data = response.docs.map((doc) => doc.data() as Movie);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
 });
+
+const getMoviesListLocalStorage = JSON.parse(
+  window.localStorage.getItem("moviesList")!
+);
 
 export const moviesSlice = createSlice({
   name: "movies",
   initialState: {
     entities: {
       movies: {
-        moviesList: [],
+        moviesList: getMoviesListLocalStorage as Movie[] | [],
         loading: "idle",
         error: undefined,
       },
@@ -28,10 +36,11 @@ export const moviesSlice = createSlice({
   extraReducers: {
     [fetchMovies.fulfilled.toString()]: (
       state,
-      action: PayloadAction<{ moviesList: Movie[] }>
+      action: PayloadAction<Movie[]>
     ) => {
       const { movies } = state.entities;
-      movies.moviesList = action.payload.moviesList;
+      movies.moviesList = action.payload;
+      window.localStorage.setItem("moviesList", JSON.stringify(action.payload));
       movies.loading = "idle";
     },
     [fetchMovies.pending.toString()]: (state) => {
