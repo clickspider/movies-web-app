@@ -1,7 +1,9 @@
 import React, { FC } from "react";
-import { useNavigate, useLocation, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { userSelector } from "../store/user/userSlice";
+
+import { useNavigate, useLocation, Navigate } from "react-router-dom";
+import { userSelector, fetchUserProfile } from "../store/user/userSlice";
+import { useAppDispatch } from "../store";
 
 import icons from "../assets/icons";
 import Button from "./Button";
@@ -11,9 +13,10 @@ interface LoginProps {
 }
 
 const LoginPage: FC<LoginProps> = ({ className = "" }) => {
+  const dispatch = useAppDispatch();
   let navigate = useNavigate();
   let location = useLocation();
-  const { user, auth } = useSelector(userSelector);
+  const { user } = useSelector(userSelector);
 
   let from = location.pathname || "/";
 
@@ -21,11 +24,11 @@ const LoginPage: FC<LoginProps> = ({ className = "" }) => {
     return <Navigate to="/" state={{ from: location }} replace />;
   }
 
-  function onBtnClick(event: React.MouseEvent<HTMLButtonElement>) {
-    auth.signInWithGoogle(() => {
-      navigate(from, { replace: true });
-    });
+  async function onBtnClick(event: React.MouseEvent<HTMLButtonElement>) {
+    await dispatch(fetchUserProfile());
+    navigate(from, { replace: true });
   }
+
   return (
     <section className={`login-container ${className}`}>
       <div className="login-container__logo">
@@ -39,6 +42,7 @@ const LoginPage: FC<LoginProps> = ({ className = "" }) => {
         <div className="login-container__form-button">
           <Button
             onClick={onBtnClick}
+            isLoading={user.loading === "pending"}
             className="button__primary heading-tertiary"
           >
             <icons.iconGoogle

@@ -1,14 +1,15 @@
-export interface User {
-  uid: number;
-  name: string;
-  email: string;
-  mookmarkedMovies: number[];
+export interface UserProfile {
+  uid: string;
+  email: string | null;
+  bookmarkedIds: number[];
+  photoURL: string | null;
+  displayName: string | null;
 }
 
 export interface UserState {
   entities: {
     user: {
-      profile: User | null;
+      profile: UserProfile | null;
       loading: "idle" | "pending";
       error: string | undefined;
     };

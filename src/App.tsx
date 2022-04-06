@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainLayout from "./components/MainLayout";
 import { fetchMovies } from "./store/movies/moviesSlice";
+import { setUserProfile } from "./store/user/userSlice";
 
 import AllCatalog from "./components/AllCatalog";
 import LoginPage from "./components/LoginPage";
@@ -9,18 +10,20 @@ import Bookmarked from "./components/Bookmarked";
 import CategoryContainer from "./components/CategoryContainer";
 import RequireAuth from "./components/RequireAuth";
 
+import { auth, onAuthStateChanged } from "./common/fbConfig";
+
 import { useAppDispatch } from "./store";
 import "./sass/main.scss";
 
 function App() {
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    // dispatch(fetchUserProfile()));
-    // if (user) {
-    dispatch(fetchMovies());
-    // }
-  }, [dispatch]);
+  onAuthStateChanged(auth, (newUser) => {
+    if (newUser) {
+      dispatch(fetchMovies());
+      dispatch(setUserProfile({ ...newUser, bookmarkedIds: [] }));
+    }
+  });
 
   return (
     <BrowserRouter>
