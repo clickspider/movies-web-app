@@ -8,11 +8,7 @@ import { useAppDispatch } from "../store";
 import icons from "../assets/icons";
 import Button from "./Button";
 
-interface LoginProps {
-  className?: string;
-}
-
-const LoginPage: FC<LoginProps> = ({ className = "" }) => {
+const LoginPage: FC = () => {
   const dispatch = useAppDispatch();
   let navigate = useNavigate();
   let location = useLocation();
@@ -30,7 +26,7 @@ const LoginPage: FC<LoginProps> = ({ className = "" }) => {
   }
 
   return (
-    <section className={`login-container ${className}`}>
+    <section className="login-container">
       <div className="login-container__logo">
         <icons.logo />
       </div>
