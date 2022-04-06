@@ -4,7 +4,8 @@ import { moviesSelector } from "../store/movies/moviesSlice";
 
 const MainContainer: React.FC = ({ children }) => {
   const { movies } = useSelector(moviesSelector);
-  if (movies.loading === "pending") {
+
+  if (movies.loading === "pending" && !movies.moviesList) {
     return <div>Loading...</div>;
   }
 
