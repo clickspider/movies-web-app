@@ -1,10 +1,12 @@
 import React, { FC } from "react";
+import icons from "../assets/icons";
 
 interface ButtonProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   title?: string;
   backgroundColor?: string;
   className?: string;
+  isLoading?: boolean;
 }
 
 const Button: FC<ButtonProps> = ({
@@ -13,6 +15,7 @@ const Button: FC<ButtonProps> = ({
   title = "",
   className = "button__primary",
   backgroundColor = "",
+  isLoading = false,
 }) => {
   return (
     <button
@@ -20,7 +23,7 @@ const Button: FC<ButtonProps> = ({
       onClick={onClick}
       style={{ backgroundColor: backgroundColor }}
     >
-      {title ? title : children}
+      {isLoading ? <icons.iconLoading /> : <>{title ? title : children}</>}
     </button>
   );
 };

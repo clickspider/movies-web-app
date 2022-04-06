@@ -17,17 +17,12 @@ export const userSlice = createSlice({
   initialState: {
     entities: {
       user: {
-        profile: {
-          uid: "",
-          name: "",
-          email: "",
-          bookmarkedMovies: [],
-        },
+        profile: null,
         loading: "idle",
         error: undefined,
       },
     },
-  } as unknown as UserState,
+  } as UserState,
   reducers: {},
   extraReducers: {
     [fetchUserProfile.fulfilled.toString()]: (

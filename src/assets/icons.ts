@@ -6,6 +6,8 @@ import { ReactComponent as iconCategoryTV } from "./icon-category-tv.svg";
 import { ReactComponent as logo } from "./logo.svg";
 import { ReactComponent as iconSearch } from "./icon-search.svg";
 import { ReactComponent as iconPlay } from "./icon-play.svg";
+import { ReactComponent as iconGoogle } from "./icon-google.svg";
+import { ReactComponent as iconLoading } from "./icon-loading.svg";
 
 import avatar from "./image-avatar.png";
 
@@ -27,4 +29,6 @@ export default {
   iconNavBookmark,
   iconSearch,
   iconPlay,
+  iconGoogle,
+  iconLoading,
 };

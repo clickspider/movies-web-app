@@ -1,0 +1,25 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  &__logo {
+    margin-bottom: 80px;
+  }
+  &__form {
+    width: 400px;
+    padding: 32px;
+    background-color: $color-secondary;
+    border-radius: 20px;
+
+    &-title {
+      margin-bottom: 40px;
+    }
+
+    &-text {
+      text-align: center;
+      margin-top: 24px;
+    }
+  }
+}

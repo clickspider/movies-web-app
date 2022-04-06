@@ -8,7 +8,7 @@ export interface User {
 export interface UserState {
   entities: {
     user: {
-      profile: User;
+      profile: User | null;
       loading: "idle" | "pending";
       error: string | undefined;
     };
