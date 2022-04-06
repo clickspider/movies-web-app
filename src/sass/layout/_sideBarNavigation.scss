@@ -4,8 +4,12 @@
   background-color: $color-secondary;
   display: flex;
 
+  max-height: 960px;
+
   @media #{$break1}, #{$break2}, #{$break3}, #{$break4} {
     border-radius: 18px;
+    position: sticky;
+    top: 32px;
   }
 
   @media #{$break0} {
