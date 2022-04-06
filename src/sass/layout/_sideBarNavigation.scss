@@ -8,8 +8,6 @@
 
   @media #{$break1}, #{$break2}, #{$break3}, #{$break4} {
     border-radius: 18px;
-    position: sticky;
-    top: 32px;
   }
 
   @media #{$break0} {
@@ -26,6 +24,9 @@
   }
 
   @media #{$break2}, #{$break3}, #{$break4} {
+    position: sticky;
+    top: 32px;
+
     width: $sidebar-width;
     overflow-x: hidden;
 
