@@ -1,12 +1,12 @@
 import React, { FC, useMemo } from "react";
 import { useSelector } from "react-redux";
+import { useSearch } from "./MainLayout";
 import { moviesSelector } from "../store/movies/moviesSlice";
 import MovieSection from "./MovieSection";
 import { Movie } from "../store/movies/types";
 import MovieCard from "./MovieCard";
 
 interface CategoryContainerProps {
-  searchValue: string;
   category?: "Movie" | "TV Series";
   customSectionTitle?: string;
   bookmarked?: boolean;
@@ -14,13 +14,13 @@ interface CategoryContainerProps {
 }
 
 const CategoryContainer: FC<CategoryContainerProps> = ({
-  searchValue,
   category = "",
   customSectionTitle,
   bookmarked = false,
   className = "mt-40",
 }) => {
   const { movies } = useSelector(moviesSelector);
+  const { searchValue } = useSearch();
 
   const filteredMovies = useMemo(() => {
     if (movies.moviesList) {

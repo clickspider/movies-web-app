@@ -1,18 +1,15 @@
 import React, { FC, useMemo } from "react";
 import { useSelector } from "react-redux";
 import { moviesSelector } from "../store/movies/moviesSlice";
+import { useSearch } from "./MainLayout";
 import MovieSection from "./MovieSection";
 import { Movie } from "../store/movies/types";
 import CategoryContainer from "./CategoryContainer";
 import MovieCardSlider from "./MovieCardSlider";
 
-interface AllCatalogProps {
-  searchValue: string;
-}
-
-const AllCatalog: FC<AllCatalogProps> = ({ searchValue }) => {
+const AllCatalog: FC = () => {
   const { movies } = useSelector(moviesSelector);
-
+  const { searchValue } = useSearch();
   const trendingMovies = useMemo(() => {
     if (movies.moviesList) {
       return movies.moviesList.filter((movie: Movie) => movie.isTrending);
@@ -26,10 +23,7 @@ const AllCatalog: FC<AllCatalogProps> = ({ searchValue }) => {
           <MovieCardSlider moviesList={trendingMovies} />
         </MovieSection>
       )}
-      <CategoryContainer
-        customSectionTitle="Recommended for you"
-        searchValue={searchValue}
-      />
+      <CategoryContainer customSectionTitle="Recommended for you" />
     </section>
   );
 };
