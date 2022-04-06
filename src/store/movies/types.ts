@@ -1,3 +1,7 @@
+export enum Categories {
+  Movie = "Movie",
+  TVSeries = "TV Series",
+}
 export interface Movie {
   title: string;
   id: number;
@@ -14,7 +18,7 @@ export interface Movie {
     };
   };
   year: number;
-  category: string;
+  category: Categories;
   rating: string;
   isBookmarked: boolean;
   isTrending: boolean;
