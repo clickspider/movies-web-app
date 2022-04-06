@@ -1,5 +1,6 @@
 .movie-card-slider {
   overflow: scroll hidden;
+  cursor: grab;
   &__container {
     display: flex;
     width: max-content;
