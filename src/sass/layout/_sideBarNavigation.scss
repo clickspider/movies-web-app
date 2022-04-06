@@ -90,6 +90,7 @@
   &__avatar {
     width: 40px;
     height: 40px;
+    border-radius: 50%;
     @media #{$break0}, #{$break1} {
       margin-left: auto;
     }
