@@ -17,14 +17,14 @@ const AllCatalog: FC = () => {
   }, [movies.moviesList]);
 
   return (
-    <section>
+    <>
       {!searchValue && (
         <MovieSection title="Trending">
           <MovieCardSlider moviesList={trendingMovies} />
         </MovieSection>
       )}
       <CategoryContainer customSectionTitle="Recommended for you" />
-    </section>
+    </>
   );
 };
 

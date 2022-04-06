@@ -1,14 +1,19 @@
 .login-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+  @include absCenter;
+  @media #{$break0} {
+    width: 100%;
+    padding: 1rem;
+  }
+  @media #{$break1}, #{$break2}, #{$break3}, #{$break4} {
+    width: 400px;
+  }
   &__logo {
+    margin: 0 auto;
+    width: max-content;
     margin-bottom: 80px;
   }
+
   &__form {
-    width: 400px;
     padding: 32px;
     background-color: $color-secondary;
     border-radius: 20px;

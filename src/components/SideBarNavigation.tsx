@@ -7,7 +7,7 @@ const SideBarNavigation = () => {
   const { user } = useSelector(userSelector);
 
   return (
-    <div className="sidenav">
+    <header className="sidenav">
       <icons.logo className="sidenav__logo" />
       <nav className="sidenav__items">
         <NavLink to="/">
@@ -29,7 +29,7 @@ const SideBarNavigation = () => {
         alt="avatar"
         className="sidenav__avatar"
       />
-    </div>
+    </header>
   );
 };
 

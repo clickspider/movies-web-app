@@ -34,7 +34,7 @@ const CategoryContainer: FC<CategoryContainerProps> = ({
   }, [bookmarked, category, movies.moviesList, searchValue]);
 
   if (!filteredMovies?.length && searchValue === "") {
-    return <div>No movies</div>;
+    return null;
   }
 
   return (

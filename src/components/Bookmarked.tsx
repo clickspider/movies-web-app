@@ -4,7 +4,7 @@ import CategoryContainer from "./CategoryContainer";
 
 const Bookmarked: FC = () => {
   return (
-    <section>
+    <>
       <CategoryContainer
         customSectionTitle="Bookmarked Movies"
         category="Movie"
@@ -16,7 +16,7 @@ const Bookmarked: FC = () => {
         category="TV Series"
         bookmarked
       />
-    </section>
+    </>
   );
 };
 
