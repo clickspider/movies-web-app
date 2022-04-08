@@ -2,11 +2,12 @@ import React, { FC } from "react";
 import { useSelector } from "react-redux";
 
 import { useNavigate, useLocation, Navigate } from "react-router-dom";
-import { userSelector, fetchUserProfile } from "../store/user/userSlice";
+import { userSelector } from "../store/user/userSlice";
 import { useAppDispatch } from "../store";
 
 import icons from "../assets/icons";
 import Button from "./Button";
+import { fetchUserProfile } from "../store/user/actions";
 
 const LoginPage: FC = () => {
   const dispatch = useAppDispatch();

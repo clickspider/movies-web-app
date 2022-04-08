@@ -12,7 +12,6 @@ const MainLayout: FC = () => {
 
   const onSearchInput = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      console.log("Search input", e.target.value);
       setSearchValue(e.target.value);
     },
     []

@@ -5,22 +5,28 @@ import { moviesSelector } from "../store/movies/moviesSlice";
 import MovieSection from "./MovieSection";
 import { Movie } from "../store/movies/types";
 import MovieCard from "./MovieCard";
+import { useAppDispatch } from "../store";
+import { updateBookmarkedIDs } from "../store/user/actions";
+import { userSelector } from "../store/user/userSlice";
+import { isMovieBookmarked } from "../common/helpers";
 
 interface CategoryContainerProps {
   category?: "Movie" | "TV Series";
   customSectionTitle?: string;
-  bookmarked?: boolean;
+  isBookmarkedSection?: boolean;
   className?: string;
 }
 
 const CategoryContainer: FC<CategoryContainerProps> = ({
   category = "",
   customSectionTitle,
-  bookmarked = false,
+  isBookmarkedSection = false,
   className = "mt-40",
 }) => {
   const { movies } = useSelector(moviesSelector);
+  const { user } = useSelector(userSelector);
   const { searchValue } = useSearch();
+  const dispatch = useAppDispatch();
 
   const filteredMovies = useMemo(() => {
     if (movies.moviesList) {
@@ -28,10 +34,12 @@ const CategoryContainer: FC<CategoryContainerProps> = ({
         (movie: Movie) =>
           movie.category.toLowerCase().includes(category.toLowerCase()) &&
           movie.title.toLowerCase().includes(searchValue.toLowerCase()) &&
-          (bookmarked ? movie.isBookmarked : true)
+          (isBookmarkedSection
+            ? isMovieBookmarked(movie.id, user!.profile!.bookmarkedIds)
+            : true)
       );
     }
-  }, [bookmarked, category, movies.moviesList, searchValue]);
+  }, [isBookmarkedSection, category, movies.moviesList, searchValue, user]);
 
   if (!filteredMovies?.length && searchValue === "") {
     return null;
@@ -54,7 +62,13 @@ const CategoryContainer: FC<CategoryContainerProps> = ({
             movie={movie}
             key={movie.id}
             mode="card-small"
-            onBookmarkClick={(e, id) => console.log("BookMark Single", e, id)}
+            onBookmarkClick={(_, movieIdx) =>
+              dispatch(updateBookmarkedIDs(movieIdx))
+            }
+            isBookmarked={isMovieBookmarked(
+              movie.id,
+              user.profile!.bookmarkedIds
+            )}
             onPlayClick={(e, id) => console.log("Play single", e, id)}
           />
         ))}

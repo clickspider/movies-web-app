@@ -10,7 +10,15 @@ import Bookmarked from "./components/Bookmarked";
 import CategoryContainer from "./components/CategoryContainer";
 import RequireAuth from "./components/RequireAuth";
 
-import { auth, onAuthStateChanged } from "./common/fbConfig";
+import {
+  auth,
+  collection,
+  db,
+  getDocs,
+  onAuthStateChanged,
+  query,
+  where,
+} from "./common/fbConfig";
 
 import { useAppDispatch } from "./store";
 import "./sass/main.scss";
@@ -18,10 +26,21 @@ import "./sass/main.scss";
 function App() {
   const dispatch = useAppDispatch();
 
-  onAuthStateChanged(auth, (newUser) => {
-    if (newUser) {
+  onAuthStateChanged(auth, async (inComingUser) => {
+    if (inComingUser) {
+      const q = query(
+        collection(db, "users"),
+        where("__name__", "==", inComingUser.uid)
+      );
+      const userBookmarkedIds = await getDocs(q);
+
+      const userProfile = {
+        ...inComingUser,
+        bookmarkedIds: userBookmarkedIds.docs[0]?.data().bookmarkedIds || [],
+      };
+
+      dispatch(setUserProfile(userProfile));
       dispatch(fetchMovies());
-      dispatch(setUserProfile({ ...newUser, bookmarkedIds: [] }));
     } else {
       dispatch(setUserProfile(null));
     }

@@ -1,29 +1,43 @@
 import React, { FC, useCallback } from "react";
 import { useSelector } from "react-redux";
+import { isMovieBookmarked } from "../common/helpers";
 import { moviesSelector } from "../store/movies/moviesSlice";
 import { Movie, Categories } from "../store/movies/types";
+import { userSelector } from "../store/user/userSlice";
 import CategoryContainer from "./CategoryContainer";
 
 const Bookmarked: FC = () => {
   const { movies } = useSelector(moviesSelector);
+  const { user } = useSelector(userSelector);
 
-  const [moviesArray, tvSeriesArray]: [Movie[], Movie[]] =
-    movies.moviesList.reduce(
-      (acc, movie) => {
-        switch (movie.category as Categories) {
-          case Categories.Movie:
-            acc[0].push(movie);
-            break;
-          case Categories.TVSeries:
-            acc[1].push(movie);
-            break;
-          default:
-            break;
-        }
-        return acc;
-      },
-      [[] as Movie[], [] as Movie[]]
-    );
+  const moviesList = JSON.parse(JSON.stringify(movies.moviesList)) as Movie[];
+
+  const [moviesArray, tvSeriesArray]: [
+    [{ isBookmarked: boolean }],
+    [{ isBookmarked: boolean }]
+  ] = moviesList.reduce(
+    (acc, movie) => {
+      const isBookmarked = isMovieBookmarked(
+        movie.id,
+        user!.profile!.bookmarkedIds
+      );
+      switch (movie.category as Categories) {
+        case Categories.Movie:
+          acc[0].push({ isBookmarked });
+          break;
+        case Categories.TVSeries:
+          acc[1].push({ isBookmarked });
+          break;
+        default:
+          break;
+      }
+      return acc;
+    },
+    [
+      [] as unknown as [{ isBookmarked: boolean }],
+      [] as unknown as [{ isBookmarked: boolean }],
+    ]
+  );
 
   const isCategoryBookmarked = useCallback(
     (category: string) => {
@@ -53,14 +67,14 @@ const Bookmarked: FC = () => {
           className="mb-100"
           customSectionTitle="Bookmarked Movies"
           category="Movie"
-          bookmarked
+          isBookmarkedSection
         />
       ) : null}
       {isCategoryBookmarked(Categories.TVSeries) ? (
         <CategoryContainer
           customSectionTitle="Bookmarked TV Series"
           category="TV Series"
-          bookmarked
+          isBookmarkedSection
         />
       ) : null}
     </>

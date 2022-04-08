@@ -17,6 +17,7 @@ interface MovieCardProps {
       | React.MouseEvent<HTMLDivElement, MouseEvent>,
     id: Movie["id"]
   ) => void;
+  isBookmarked: boolean;
 }
 
 const MovieCard: FC<MovieCardProps> = ({
@@ -24,6 +25,7 @@ const MovieCard: FC<MovieCardProps> = ({
   movie,
   onBookmarkClick,
   onPlayClick,
+  isBookmarked = false,
 }) => {
   return (
     <div className={`movie-card ${mode}`}>
@@ -48,7 +50,7 @@ const MovieCard: FC<MovieCardProps> = ({
         className="movie-card__bookmark-button"
         onClick={(event) => onBookmarkClick(event, movie.id)}
       >
-        {movie.isBookmarked ? (
+        {isBookmarked ? (
           <IconContainer className="icon-container__bookmarked">
             <icons.iconBookmarkFull />
           </IconContainer>

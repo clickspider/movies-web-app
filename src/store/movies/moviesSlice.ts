@@ -4,13 +4,9 @@ import { db, collection, getDocs } from "../../common/fbConfig";
 import { Movie, MoviesState } from "./types";
 
 export const fetchMovies = createAsyncThunk("movies/fetchMovies", async () => {
-  try {
-    const response = await getDocs(collection(db, "moviesList"));
-    const data = response.docs.map((doc) => doc.data() as Movie);
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
+  const response = await getDocs(collection(db, "moviesList"));
+  const data = response.docs.map((doc) => doc.data() as Movie);
+  return data;
 });
 
 const getMoviesListLocalStorage = JSON.parse(
