@@ -1,4 +1,4 @@
-import React, { FC, useState, useCallback } from "react";
+import React, { FC, useState } from "react";
 import { Outlet, useOutletContext } from "react-router-dom";
 
 import SearchInput from "./SearchInput";
@@ -10,12 +10,10 @@ type ContextType = { searchValue: string };
 const MainLayout: FC = () => {
   const [searchValue, setSearchValue] = useState("");
 
-  const onSearchInput = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setSearchValue(e.target.value);
-    },
-    []
-  );
+  const onSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+  };
+
   return (
     <div className="main-container">
       <SideBarNavigation />

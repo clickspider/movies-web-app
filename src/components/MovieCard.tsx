@@ -72,7 +72,12 @@ const MovieCard: FC<MovieCardProps> = ({
           <li className="movie-card__content-list--item">{movie.year}</li>
           <li className="movie-card__content-list--item mx-8">&#8226;</li>
           <li className="movie-card__content-list--item">
-            <icons.iconCategoryMovie className="mr-6 fill-white stroke-none" />
+            {movie.category === "Movie" ? (
+              <icons.iconCategoryMovie className="mr-6 fill-white stroke-none" />
+            ) : (
+              <icons.iconCategoryTV className="mr-6 fill-white stroke-none" />
+            )}
+
             {movie.category}
           </li>
           {mode === "card-large" ? (

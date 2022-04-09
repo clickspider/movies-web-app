@@ -1,4 +1,4 @@
-import React, { FC, useCallback } from "react";
+import React, { FC } from "react";
 import { useSelector } from "react-redux";
 import { isMovieBookmarked } from "../common/helpers";
 import { moviesSelector } from "../store/movies/moviesSlice";
@@ -39,19 +39,16 @@ const Bookmarked: FC = () => {
     ]
   );
 
-  const isCategoryBookmarked = useCallback(
-    (category: string) => {
-      switch (category) {
-        case Categories.Movie:
-          return moviesArray.some((movie) => movie.isBookmarked);
-        case Categories.TVSeries:
-          return tvSeriesArray.some((movie) => movie.isBookmarked);
-        default:
-          return false;
-      }
-    },
-    [moviesArray, tvSeriesArray]
-  );
+  const isCategoryBookmarked = (category: string) => {
+    switch (category) {
+      case Categories.Movie:
+        return moviesArray.some((movie) => movie.isBookmarked);
+      case Categories.TVSeries:
+        return tvSeriesArray.some((movie) => movie.isBookmarked);
+      default:
+        return false;
+    }
+  };
 
   if (
     !isCategoryBookmarked(Categories.Movie) &&
