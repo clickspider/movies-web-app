@@ -1,4 +1,4 @@
-import React, { FC, useMemo } from "react";
+import React, { FC } from "react";
 import { useSelector } from "react-redux";
 import { useSearch } from "./MainLayout";
 import { moviesSelector } from "../store/movies/moviesSlice";
@@ -28,34 +28,29 @@ const CategoryContainer: FC<CategoryContainerProps> = ({
   const { searchValue } = useSearch();
   const dispatch = useAppDispatch();
 
-  const filteredMovies = useMemo(() => {
-    if (movies.moviesList) {
-      return movies.moviesList.filter(
-        (movie: Movie) =>
-          movie.category.toLowerCase().includes(category.toLowerCase()) &&
-          movie.title.toLowerCase().includes(searchValue.toLowerCase()) &&
-          (isBookmarkedSection
-            ? isMovieBookmarked(movie.id, user!.profile!.bookmarkedIds)
-            : true)
-      );
-    }
-  }, [isBookmarkedSection, category, movies.moviesList, searchValue, user]);
+  const filteredMovies = movies.moviesList.filter(
+    (movie: Movie) =>
+      movie.category.toLowerCase().includes(category.toLowerCase()) &&
+      movie.title.toLowerCase().includes(searchValue.toLowerCase()) &&
+      (isBookmarkedSection
+        ? isMovieBookmarked(movie.id, user!.profile!.bookmarkedIds)
+        : true)
+  );
 
   if (!filteredMovies?.length && searchValue === "") {
     return null;
   }
 
+  const foundTitle = `Found ${
+    filteredMovies?.length
+  } results for ‘${searchValue}’ ${category ? `in ${category}` : ""}`;
+
+  const customTitle = customSectionTitle || category;
+
+  const movieSectionTitle = searchValue ? foundTitle : customTitle;
+
   return (
-    <MovieSection
-      title={
-        searchValue
-          ? `Found ${filteredMovies?.length} results for ‘${searchValue}’ ${
-              category ? `in ${category}` : ""
-            }`
-          : `${customSectionTitle || category}`
-      }
-      className={className}
-    >
+    <MovieSection title={movieSectionTitle} className={className}>
       <div className="grid-container">
         {filteredMovies?.map((movie: Movie) => (
           <MovieCard

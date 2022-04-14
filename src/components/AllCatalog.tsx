@@ -10,11 +10,10 @@ import MovieCardSlider from "./MovieCardSlider";
 const AllCatalog: FC = () => {
   const { movies } = useSelector(moviesSelector);
   const { searchValue } = useSearch();
-  const trendingMovies = useMemo(() => {
-    if (movies.moviesList) {
-      return movies.moviesList.filter((movie: Movie) => movie.isTrending);
-    }
-  }, [movies.moviesList]);
+  const trendingMovies = useMemo(
+    () => movies.moviesList.filter((movie: Movie) => movie.isTrending),
+    [movies.moviesList]
+  );
 
   return (
     <>

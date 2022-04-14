@@ -1,4 +1,4 @@
-import React, { FC, useCallback } from "react";
+import React, { FC } from "react";
 import icons from "../assets/icons";
 import { useLocation } from "react-router-dom";
 
@@ -9,7 +9,7 @@ interface SearchInputProps {
 
 const SearchInput: FC<SearchInputProps> = ({ onChange, value }) => {
   const location = useLocation();
-  const getTabName = useCallback(() => {
+  const getTabName = () => {
     switch (location.pathname) {
       case "/movies-catalog":
         return "Movies";
@@ -20,7 +20,7 @@ const SearchInput: FC<SearchInputProps> = ({ onChange, value }) => {
       default:
         return "Movies or TV Series";
     }
-  }, [location]);
+  };
   return (
     <section className="search-input">
       <icons.iconSearch />
