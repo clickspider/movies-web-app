@@ -1,4 +1,4 @@
-import React, { FC, useMemo, useEffect } from "react";
+import React, { FC } from "react";
 import { useSelector } from "react-redux";
 import { useSearch } from "./MainLayout";
 import { moviesSelector } from "../store/movies/moviesSlice";
