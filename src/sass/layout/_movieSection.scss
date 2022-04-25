@@ -1,7 +1,4 @@
 .movie-section {
-  svg {
-    stroke: $color-white;
-  }
   &__heading {
     @media #{$break0} {
       margin-bottom: 16px;
