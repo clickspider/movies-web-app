@@ -6,6 +6,7 @@ import {
   signInWithPopup,
   onAuthStateChanged,
   signOut,
+  connectAuthEmulator,
 } from "firebase/auth";
 
 import {
@@ -17,6 +18,7 @@ import {
   doc,
   query,
   where,
+  connectFirestoreEmulator,
 } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -41,6 +43,11 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 const db = getFirestore(app);
+
+if (process.env.NODE_ENV === "development") {
+  connectAuthEmulator(auth, "http://localhost:9099");
+  connectFirestoreEmulator(db, "localhost", 8080);
+}
 
 export {
   onAuthStateChanged,
