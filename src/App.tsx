@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainLayout from "./components/MainLayout";
 import { fetchMovies } from "./store/movies/moviesSlice";
 import { setUserProfile } from "./store/user/userSlice";
+import { UserProfile } from "./store/user/types";
 
 import AllCatalog from "./components/AllCatalog";
 import LoginPage from "./components/LoginPage";
@@ -26,24 +27,25 @@ import "./sass/main.scss";
 function App() {
   const dispatch = useAppDispatch();
 
+  const initAppWithUserProfile = (userProfie: UserProfile | null) => {
+    dispatch(setUserProfile(userProfie));
+    dispatch(fetchMovies());
+  };
+
   onAuthStateChanged(auth, async (inComingUser) => {
-    if (inComingUser) {
-      const q = query(
-        collection(db, "users"),
-        where("__name__", "==", inComingUser.uid)
-      );
-      const userBookmarkedIds = await getDocs(q);
+    if (!inComingUser) return dispatch(setUserProfile(null));
+    const q = query(
+      collection(db, "users"),
+      where("__name__", "==", inComingUser.uid)
+    );
+    const userBookmarkedIds = await getDocs(q);
 
-      const userProfile = {
-        ...inComingUser,
-        bookmarkedIds: userBookmarkedIds.docs[0]?.data().bookmarkedIds || [],
-      };
+    const userProfile = {
+      ...inComingUser,
+      bookmarkedIds: userBookmarkedIds.docs[0]?.data().bookmarkedIds || [],
+    };
 
-      dispatch(setUserProfile(userProfile));
-      dispatch(fetchMovies());
-    } else {
-      dispatch(setUserProfile(null));
-    }
+    return initAppWithUserProfile(userProfile);
   });
 
   return (

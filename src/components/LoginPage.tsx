@@ -29,7 +29,7 @@ const LoginPage: FC = () => {
   return (
     <section className="login-container">
       <div className="login-container__logo">
-        <icons.logo />
+        <icons.logo style={{ stroke: "none" }} />
       </div>
       <div className="login-container__form">
         <div className="login-container__form-title">
