@@ -24,7 +24,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "firebase emulators:start && react-scripts start",
+    "start": "react-scripts start",
+    "emulator": "firebase emulators:start --import ./firebase --export-on-exit",
+    "dev": "npx concurrently --kill-others \"yarn emulator\" \"yarn start\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

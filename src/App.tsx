@@ -23,6 +23,7 @@ import {
 
 import { useAppDispatch } from "./store";
 import "./sass/main.scss";
+// import { addMockDataToFirestone } from "./common/helpers";
 
 function App() {
   const dispatch = useAppDispatch();

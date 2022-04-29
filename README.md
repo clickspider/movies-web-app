@@ -15,7 +15,7 @@
 Navigate to the repository's root directory and run the following commands:
 ```
 yarn
-yarn start
+yarn dev
 ```
 - The application is now running at [http://localhost:8080](http://localhost:8080)
 
