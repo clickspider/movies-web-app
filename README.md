@@ -12,12 +12,35 @@
 
 
 #### Getting started
-Navigate to the repository's root directory and run the following commands:
+
+In order to run this app locally successfully you will need to have some environment variables set.
+
+* **cypress.env-example.json**: This is a JSON file that contains the UID of the user that you need to set as the test user.
+* **serviceAccount-example.json**: This is a JSON file that contains the environment variables that you need to set to connect to the Firebase database (you can get it from Firebase Console -> your project -> Project settings -> Service accounts -> Generate new private key).
+
+Once that is done, rename the files to be without the "-example" part.
+
+Then navigate to the repository's root directory and run the following commands:
 ```
 yarn
 yarn dev
 ```
 - The application is now running at [http://localhost:8080](http://localhost:8080)
+
+
+#### General commands
+To run unit tests locally:
+```
+yarn test:unit
+```
+To run integration tests locally:
+```
+yarn test:integration
+```
+To run storybook locally:
+```
+yarn storybook
+```
 
 
 ## In this app, users are be able to:
@@ -27,10 +50,9 @@ yarn dev
 - Navigate between Home, Movies, TV Series, and Bookmarked Shows pages
 - Add/Remove bookmarks from all movies and TV series
 - Search for relevant shows on all pages
-- **Bonus**: Build this project as a full-stack application
-- **Bonus**: If you're building a full-stack app, we provide authentication screen (sign-up/login) designs if you'd like to create an auth flow
+- This project is a full-stack application (you can Login/Logout/Bookmark/etc, all is connected through Firebase)
 
-### Expected Behaviour
+### General Behaviour
 
 - General
   - The navigation menu should be fixed to the left for larger screens. Use the "Desktop - Home" page in the design as a visual reference.
