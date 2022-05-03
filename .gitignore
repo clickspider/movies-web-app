@@ -23,3 +23,6 @@ yarn-debug.log*
 yarn-error.log*
 firebase-debug.log*
 firestore-debug.log*
+
+serviceAccount.json
+cypress.env.json
