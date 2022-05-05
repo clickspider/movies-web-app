@@ -1,7 +1,8 @@
+/* eslint-disable import/no-anonymous-default-export */
 /// <reference types="cypress" />
 
-import admin from 'firebase-admin';
-import { plugin as cypressFirebasePlugin } from 'cypress-firebase';
+import admin from "firebase-admin";
+import { plugin as cypressFirebasePlugin } from "cypress-firebase";
 
 // ***********************************************************
 // This example plugins/index.js can be used to load plugins
@@ -20,10 +21,13 @@ import { plugin as cypressFirebasePlugin } from 'cypress-firebase';
  * @type {Cypress.PluginConfig}
  */
 // eslint-disable-next-line no-unused-vars
-export default (on, config) => {
+export default (
+  on: Cypress.PluginEvents,
+  config: Partial<Cypress.PluginConfigOptions>
+) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
-  const extendedConfig = cypressFirebasePlugin(on, config, admin)
+  const extendedConfig = cypressFirebasePlugin(on, config, admin);
 
   return extendedConfig;
-}
+};
