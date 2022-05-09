@@ -1,16 +1,21 @@
 {
   "extends": "../tsconfig.json",
   "include": [
-    "./*/*.ts"
+    "../node_modules/cypress",
+    "./**/*.ts"
   ],
-  "exclude": [],
+  "exclude": [
+    "../node_modules"
+  ],
   "compilerOptions": {
     "lib": [
       "es2015",
       "dom"
     ],
     "types": [
-      "cypress"
+      "cypress",
+      "cypress-axe",
+      "cypress-firebase"
     ],
     "isolatedModules": false,
     "allowJs": true,

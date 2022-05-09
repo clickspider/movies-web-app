@@ -29,5 +29,18 @@ export default (
   // `config` is the resolved Cypress config
   const extendedConfig = cypressFirebasePlugin(on, config, admin);
 
+  on("task", {
+    log(message) {
+      console.log(message);
+
+      return null;
+    },
+    table(message) {
+      console.table(message);
+
+      return null;
+    },
+  });
+
   return extendedConfig;
 };
